@@ -1,6 +1,4 @@
-say %{
-  🙏 Installing rspec, capybara, factory_bot, ffaker...
-}
+say(message = "🙏 Installing rspec, capybara, factory_bot, ffaker...", color = :magenta) 
 
 # Add test files
 inject_into_file GEMSPEC_FILE, after: /spec\.files.*$/ do 

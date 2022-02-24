@@ -1,7 +1,5 @@
-say %{
-  🙏 Installing guard...
-
-}
+intro_message = "🙏 Installing guard..."
+say(message = intro_message, color = :magenta) 
 
 inject_into_file GEMSPEC_FILE, before: %r{^end$} do
 %{
