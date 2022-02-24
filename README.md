@@ -22,7 +22,9 @@ When creating a rails engine, use ```-T``` to disable test creation. A dummy app
 **Example usage:**
 
 ```rails plugin new engine_name --mountable -B -T -m ./rails-engine-spec-template/template.rb```
+
 OR
+
 ```rails plugin new engine_name --mountable -B -T -m https://github.com/captproton/rails-engine-spec-template/blob/master/template.rb```
 
 This engine template was tested with Ruby 2.1 and Rails 4.0.4, though I don't see any reason it won't work on earlier or later versions. [File an issue if you have one](https://github.com/bbugh/rails-engine-spec-template/issues/ "Issues").
