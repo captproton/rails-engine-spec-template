@@ -1,3 +1,7 @@
+say %{
+  🙏 Dummy app adjustments for a rails engine
+}
+
 if File.exist?(File.join(destination_root, 'spec', 'dummy'))
   say "Spec dummy application already exists, skipping."
 else
