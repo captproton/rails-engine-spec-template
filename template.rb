@@ -25,6 +25,5 @@ git gc: '--quiet'
 
 say %{
   Things to do:
-    - edit #{name}.gemspec to set correct info and remove bundler warnings.
     - rake db:migrate
 }
