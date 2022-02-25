@@ -24,33 +24,22 @@ new_source_code_uri = ask("Your gem's public repo URL: ", color = :magenta)
 new_changelog_uri = "#{new_source_code_uri}/blob/main/CHANGELOG.md"
 
 # spec.homepage
-gsub_file 'engine_name.gemspec', /spec\.homepage    \= \"TODO\"/, "spec.homepage    = \"#{new_homepage_url}\""
+gsub_file "#{new_engine_name}.gemspec", /spec\.homepage    \= \"TODO\"/, "spec.homepage    = \"#{new_homepage_url}\""
 
 # spec.summary
-gsub_file 'engine_name.gemspec', /\"TODO: Summary of.*\"/, "\"#{new_summary}\" "
+gsub_file "#{new_engine_name}.gemspec", /\"TODO: Summary of.*\"/, "\"#{new_summary}\" "
 
 # spec.description
-gsub_file 'engine_name.gemspec',  /\"TODO: Description of.*\"/, "\"#{new_description}\""
+gsub_file "#{new_engine_name}.gemspec",  /\"TODO: Description of.*\"/, "\"#{new_description}\""
 
 # spec.gemserver (double quotes means that we are deleting it for the 
 # default)
-gsub_file 'engine_name.gemspec', /spec.metadata\[\"allowed_push_host\"\] = \"TODO: Set to \'http\:\/\/mygemserver\.com\'\"/, ""
+gsub_file "#{new_engine_name}.gemspec", /spec.metadata\[\"allowed_push_host\"\] = \"TODO: Set to \'http\:\/\/mygemserver\.com\'\"/, ""
 
 # spec.metadata["source_code_uri"]
-gsub_file 'engine_name.gemspec', /spec.metadata\[\"source_code_uri\"\] = \"TODO: Put your gem's public repo URL here.\"/, "spec.metadata\[\"source_code_uri\"\] = \"#{new_source_code_uri}\""
+gsub_file "#{new_engine_name}.gemspec", /spec.metadata\[\"source_code_uri\"\] = \"TODO: Put your gem's public repo URL here.\"/, "spec.metadata\[\"source_code_uri\"\] = \"#{new_source_code_uri}\""
 
 #   spec.metadata["changelog_uri"]
-gsub_file 'engine_name.gemspec', /spec.metadata\[\"changelog_uri\"\] = \"TODO: Put your gem's CHANGELOG.md URL here.\"/, "spec.metadata\[\"changelog_uri\"\] = \"#{new_changelog_uri}\""
-
-# Rspec... if you _insist_
-# puts "🙏 Starting off with RSpec!"
-# run "rails app:template LOCATION='https://railsbytes.com/script/x7msNE'"
+gsub_file "#{new_engine_name}.gemspec", /spec.metadata\[\"changelog_uri\"\] = \"TODO: Put your gem's CHANGELOG.md URL here.\"/, "spec.metadata\[\"changelog_uri\"\] = \"#{new_changelog_uri}\""
 
 
-# FactoryBot
-# puts "🙏 Moving on to install FactoryBot!"
-# run "rails app:template LOCATION='https://railsbytes.com/script/XnJsbX'"
-
-# StandardRB
-#puts "🙏 Moving on to install StandardRB!"
-# run "rails app:template LOCATION='https://railsbytes.com/script/xjNs4x'"
