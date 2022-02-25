@@ -1,3 +1,6 @@
+intro_message = "🙏 Dummy app adjustments for a rails engine"
+say(message = intro_message, color = :magenta) 
+
 if File.exist?(File.join(destination_root, 'spec', 'dummy'))
   say "Spec dummy application already exists, skipping."
 else
