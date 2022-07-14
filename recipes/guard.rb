@@ -12,4 +12,4 @@ bundle
 
 run 'bundle exec guard init'
 
-git_commit "Installed guard"
+# git_commit "Installed guard"

@@ -1,5 +1,6 @@
 
 def git_commit(message)
+  #FIX this has bugs
   git add: '.'
   git commit: "-m '#{message}' -q"
 end
@@ -8,9 +9,10 @@ def bundle
   run "bundle install --quiet"
 end
 
+  #FIX this has bugs
 say "Creating git repository..."
-git :init
-git_commit "Initial commit of empty Rails engine."
+# git :init
+# git_commit "Initial commit of empty Rails engine."
 
 GEMSPEC_FILE = File.join(destination_root, "#{name}.gemspec")
 RECIPE_PATH = File.join(File.dirname(rails_template), "recipes")

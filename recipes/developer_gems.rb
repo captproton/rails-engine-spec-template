@@ -13,4 +13,4 @@ end
 
 bundle
 
-git_commit "Adding development gems"
+# git_commit "Adding development gems"

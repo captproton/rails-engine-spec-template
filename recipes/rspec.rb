@@ -80,4 +80,4 @@ insert_into_file 'spec/spec_helper.rb', before: /^end$/ do
 }
 end
 
-git_commit "Installed rspec"
+# git_commit "Installed rspec"
