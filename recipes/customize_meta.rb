@@ -41,3 +41,5 @@ gsub_file "#{new_engine_name}.gemspec", /spec.metadata\[\"source_code_uri\"\] = 
 
 #   spec.metadata["changelog_uri"]
 gsub_file "#{new_engine_name}.gemspec", /spec.metadata\[\"changelog_uri\"\] = \"TODO: Put your gem's CHANGELOG.md URL here.\"/, "spec.metadata\[\"changelog_uri\"\] = \"#{new_changelog_uri}\""
+
+git_commit "Customizing meta of gem"
