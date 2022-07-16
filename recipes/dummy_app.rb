@@ -9,7 +9,9 @@ else
   # 1. create_dummy_app command changes working directory booooooooo
   # 2. inside() reports a warning, boooooooo
   curdir = Dir.getwd
+  say "Current directory is #{curdir}"
   create_dummy_app 'spec/dummy'
+  # get back to the original directory
   Dir.chdir curdir
 
   append_to_file '.gitignore' do
