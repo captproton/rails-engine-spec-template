@@ -18,6 +18,7 @@ Dir.chdir app_dir
 # We need Gemfile for to add Redis
 FileUtils.touch "#{app_dir}/Gemfile"
 
+# =================================================================
 step_message = "🧩 Installing esbuild..."
 say(message = step_message) 
 Dir.chdir destination_root
@@ -28,6 +29,7 @@ system("rails javascript:install:esbuild")
 Dir.chdir destination_root
 
 
+# =================================================================
 step_message = "🧩 Installing bootstrap..."
 say(message = step_message) 
 Dir.chdir destination_root
@@ -37,6 +39,7 @@ Dir.chdir app_dir
 system("rails css:install:bootstrap")
 Dir.chdir destination_root
 
+# =================================================================
 step_message = "🧩 Installing stimulus..."
 say(message = step_message)
 Dir.chdir destination_root
@@ -47,6 +50,7 @@ system("rails stimulus:install")
 Dir.chdir destination_root
 
 
+# =================================================================
 step_message = "🧩 Installing turbo..."
 say(message = step_message)
 Dir.chdir destination_root
@@ -57,12 +61,24 @@ system("rails turbo:install")
 system("rails turbo:install:redis")
 Dir.chdir destination_root
 
-# step_message = "🧩 Generating..."
-# say(message = step_message, color = :blue) 
-# # ./bin/rails 'turbo:install'
-# # ./bin/rails 'turbo:install:redis'
+# =================================================================
+step_message = "🧩 Creating test page for stimulus and turbo..."
+say(message = step_message) 
+Dir.chdir app_dir
+puts "$*$> rails g controller DummyRails7Testing index"
+run "rails g controller DummyRails7Testing index"
 
+Dir.chdir destination_root
+append_to_file 'spec/dummy/app/views/dummy_rails7_testing/index.html.erb' do
+ '<h2>You should see hello world below</h2>
+  <div data-controller="hello">
+  </div>
+  <p>If you see "Hello World!" above, Stimulus.js is working. </p>'
+end
 
+Dir.chdir destination_root
+
+# =================================================================
 # change back to the gem root directory
 Dir.chdir destination_root
 
