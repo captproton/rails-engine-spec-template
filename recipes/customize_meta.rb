@@ -1,3 +1,4 @@
+# recipes/customize_meta.rb
 intro_message = "
   🙏 Setting up
   LET US ADD OUR META DATA:
@@ -8,14 +9,14 @@ intro_message = "
     - source_code_uri
     - changelog_uri
 "
-say(message = intro_message, color = :magenta) 
+say(message = intro_message, color = :magenta)
 
 # setup
 # puts "🙏 Setting up"
 meta_message = "Let's update the gemspec to remove the bundler warnings:
     - rake db:migrate
  \n"
-say(message = meta_message, color = :magenta) 
+say(message = meta_message, color = :magenta)
 new_engine_name = ask("engine name: ", color = :magenta)
 new_homepage_url = ask("homepage url: ", color = :magenta)
 new_summary = ask("Summary: ", color = :magenta)
@@ -32,7 +33,7 @@ gsub_file "#{new_engine_name}.gemspec", /\"TODO: Summary of.*\"/, "\"#{new_summa
 # spec.description
 gsub_file "#{new_engine_name}.gemspec",  /\"TODO: Description of.*\"/, "\"#{new_description}\""
 
-# spec.gemserver (double quotes means that we are deleting it for the 
+# spec.gemserver (double quotes means that we are deleting it for the
 # default)
 gsub_file "#{new_engine_name}.gemspec", /spec.metadata\[\"allowed_push_host\"\] = \"TODO: Set to \'http\:\/\/mygemserver\.com\'\"/, ""
 

@@ -1,4 +1,4 @@
-
+# template.rb
 def git_commit(message)
   #usually happens during a recipe
   curdir = Dir.getwd

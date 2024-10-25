@@ -1,7 +1,8 @@
+# recipes/rails7_gems.rb
 intro_message = "🙏 Installing jsbundling, cssbundling, stimulus, and turbo..."
-say(message = intro_message, color = :magenta) 
+say(message = intro_message, color = :magenta)
 
-inject_into_file GEMSPEC_FILE, before: %r{^end$} do 
+inject_into_file GEMSPEC_FILE, before: %r{^end$} do
   %{
   spec.add_dependency 'jsbundling-rails'
   spec.add_dependency 'cssbundling-rails'
@@ -20,7 +21,7 @@ FileUtils.touch "#{app_dir}/Gemfile"
 
 # =================================================================
 step_message = "🧩 Installing esbuild..."
-say(message = step_message) 
+say(message = step_message)
 Dir.chdir destination_root
 system("bundle add jsbundling-rails")
 bundle
@@ -31,7 +32,7 @@ Dir.chdir destination_root
 
 # =================================================================
 step_message = "🧩 Installing bootstrap..."
-say(message = step_message) 
+say(message = step_message)
 Dir.chdir destination_root
 system("bundle add cssbundling-rails")
 bundle
@@ -63,7 +64,7 @@ Dir.chdir destination_root
 
 # =================================================================
 step_message = "🧩 Creating test page for stimulus and turbo..."
-say(message = step_message) 
+say(message = step_message)
 Dir.chdir app_dir
 puts "$*$> rails g controller DummyRails7Testing index"
 run "rails g controller DummyRails7Testing index"
