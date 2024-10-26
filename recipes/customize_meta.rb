@@ -1,3 +1,4 @@
+# recipes/customize_meta.rb
 intro_message = "
   🙏 Setting up
   LET US ADD OUR META DATA:
@@ -8,14 +9,41 @@ intro_message = "
     - source_code_uri
     - changelog_uri
 "
-say(message = intro_message, color = :magenta) 
+say(message = intro_message, color: :magenta)
+
+# Register documentation
+# "#{name.camelize}::DocumentationHelper".constantize.register_doc_section(
+#   :features,
+#   ["📝 Customizable meta information"]
+# )
+
+# {name.camelize}::DocumentationHelper.register_doc_section(
+#   :configuration,
+#   {
+#     title: "Meta Configuration",
+#     content: <<~MD
+#       ### Meta Information
+#       This engine includes configurable meta information:
+#       - Engine name
+#       - Homepage URL
+#       - Summary
+#       - Description
+#       - Source code URI
+#       - Changelog URI
+
+#       These are configured during the engine setup process.
+#     MD
+#   },
+#   position: :after_installation
+# )
+
 
 # setup
 # puts "🙏 Setting up"
 meta_message = "Let's update the gemspec to remove the bundler warnings:
     - rake db:migrate
  \n"
-say(message = meta_message, color = :magenta) 
+say(message = meta_message, color = :magenta)
 new_engine_name = ask("engine name: ", color = :magenta)
 new_homepage_url = ask("homepage url: ", color = :magenta)
 new_summary = ask("Summary: ", color = :magenta)
@@ -32,7 +60,7 @@ gsub_file "#{new_engine_name}.gemspec", /\"TODO: Summary of.*\"/, "\"#{new_summa
 # spec.description
 gsub_file "#{new_engine_name}.gemspec",  /\"TODO: Description of.*\"/, "\"#{new_description}\""
 
-# spec.gemserver (double quotes means that we are deleting it for the 
+# spec.gemserver (double quotes means that we are deleting it for the
 # default)
 gsub_file "#{new_engine_name}.gemspec", /spec.metadata\[\"allowed_push_host\"\] = \"TODO: Set to \'http\:\/\/mygemserver\.com\'\"/, ""
 

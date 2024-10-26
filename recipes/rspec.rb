@@ -1,7 +1,66 @@
-say(message = "🙏 Installing rspec, capybara, factory_bot, ffaker...", color = :magenta) 
+# recipes/rspec.rb
+intro_message = "🙏 Installing rspec, capybara, factory_bot, ffaker..."
+say(message = intro_message, color: :magenta)
+
+# Register documentation
+# #{name.camelize}::DocumentationHelper.register_doc_section(
+#   :features,
+#   [
+#     "🧪 Complete testing suite with RSpec",
+#     "🏭 Factory Bot for test data generation",
+#     "🤖 Capybara for integration testing"
+#   ]
+# )
+
+# #{name.camelize}::DocumentationHelper.register_doc_section(
+#   :testing,
+#   {
+#     title: "Testing Framework",
+#     content: <<~MD
+#       ### Testing Tools
+#       The engine includes a comprehensive testing setup:
+
+#       - RSpec for unit and integration tests
+#       - Capybara for feature specs
+#       - Factory Bot for test data
+#       - FFaker for generating test data
+
+#       ### Running Tests
+#       ```bash
+#       # Run all tests
+#       bundle exec rake spec
+
+#       # Run specific tests
+#       bundle exec rspec spec/path/to/spec.rb
+#       ```
+
+#       ### Generator Configuration
+#       The engine is configured to use:
+#       - RSpec for test generation
+#       - Factory Bot for fixtures
+#       - Asset and helper generation disabled by default
+
+#       ### Writing Tests
+#       ```ruby
+#       # spec/models/example_spec.rb
+#       RSpec.describe #{name.camelize}::Example, type: :model do
+#         it "includes factory methods" do
+#           example = create(:example)
+#           expect(example).to be_valid
+#         end
+
+#         it "includes engine route helpers" do
+#           expect(example_path).to be_present
+#         end
+#       end
+#       ```
+#     MD
+#   },
+#   position: :after_development
+# )
 
 # Add test files
-inject_into_file GEMSPEC_FILE, after: /spec\.files.*$/ do 
+inject_into_file GEMSPEC_FILE, after: /spec\.files.*$/ do
   %{\n  spec.test_files = Dir["spec/**/*"]}
 end
 
@@ -20,7 +79,7 @@ bundle
 generate 'rspec:install'
 
 # Setting default Rake task to :spec
-append_to_file 'Rakefile' do 
+append_to_file 'Rakefile' do
 %{
 APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
 load 'rails/tasks/engine.rake'
@@ -52,9 +111,9 @@ gsub_file 'spec/rails_helper.rb', '../config/environment', '../dummy/config/envi
 # FIX
 # Rspec defaults to Rails.root but that's spec/dummy...
 # gsub_file 'spec/spec_helper.rb', 'Rails.root.join("spec/support/**/*.rb")', '"#{File.dirname(__FILE__)}/support/**/*.rb"'
-insert_into_file 'spec/spec_helper.rb', before: /^RSpec\.configure/ do 
+insert_into_file 'spec/spec_helper.rb', before: /^RSpec\.configure/ do
 %{
-  
+
 require File.expand_path("../dummy/config/environment.rb", __FILE__)
 }
 end
@@ -62,9 +121,9 @@ end
 # FIX
 
 # Require factory_bot
-# insert_into_file 'spec/spec_helper.rb', "\nrequire 'factory_bot_rails'", after: "require 'rspec/autorun'" 
+# insert_into_file 'spec/spec_helper.rb', "\nrequire 'factory_bot_rails'", after: "require 'rspec/autorun'"
 
-insert_into_file 'spec/spec_helper.rb', before: /^RSpec\.configure/ do 
+insert_into_file 'spec/spec_helper.rb', before: /^RSpec\.configure/ do
 %{
 require 'rspec/rails'
 require 'factory_bot_rails'
@@ -73,7 +132,7 @@ require 'factory_bot_rails'
 end
 
 # Add Factory Bot methods to RSpec, and include the route's url_helpers.
-insert_into_file 'spec/spec_helper.rb', before: /^end$/ do 
+insert_into_file 'spec/spec_helper.rb', before: /^end$/ do
 %{
   config.include FactoryBot::Syntax::Methods
   config.include #{camelized}::Engine.routes.url_helpers
