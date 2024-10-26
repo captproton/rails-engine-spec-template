@@ -9,7 +9,34 @@ intro_message = "
     - source_code_uri
     - changelog_uri
 "
-say(message = intro_message, color = :magenta)
+say(message = intro_message, color: :magenta)
+
+# Register documentation
+# "#{name.camelize}::DocumentationHelper".constantize.register_doc_section(
+#   :features,
+#   ["📝 Customizable meta information"]
+# )
+
+# {name.camelize}::DocumentationHelper.register_doc_section(
+#   :configuration,
+#   {
+#     title: "Meta Configuration",
+#     content: <<~MD
+#       ### Meta Information
+#       This engine includes configurable meta information:
+#       - Engine name
+#       - Homepage URL
+#       - Summary
+#       - Description
+#       - Source code URI
+#       - Changelog URI
+
+#       These are configured during the engine setup process.
+#     MD
+#   },
+#   position: :after_installation
+# )
+
 
 # setup
 # puts "🙏 Setting up"

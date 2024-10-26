@@ -1,6 +1,28 @@
 # recipes/developer_gems.rb
-intro_message = "🙏 Installing puma, pry, awesome_print..."
-say(message = intro_message, color = :magenta)
+intro_message = "🙏 Installing development gems..."
+say(message = intro_message, color: :magenta)
+
+# Register documentation
+# #{name.camelize}::DocumentationHelper.register_doc_section(
+#   :features,
+#   ["🛠️ Comprehensive development tools"]
+# )
+
+# #{name.camelize}::DocumentationHelper.register_doc_section(
+#   :development_tools,
+#   {
+#     title: "Development Tools",
+#     content: <<~MD
+#       ### Included Development Gems
+#       The engine comes with several helpful development gems:
+#       - Puma - Modern web server
+#       - Pry (pry-doc, pry-rails) - Enhanced debugging
+#       - awesome_print - Improved object formatting
+#       - binding_of_caller - Advanced debugging features
+#     MD
+#   },
+#   position: :after_development
+# )
 
 inject_into_file GEMSPEC_FILE, before: %r{^end$} do
   %{

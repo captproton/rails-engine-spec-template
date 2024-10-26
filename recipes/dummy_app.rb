@@ -1,5 +1,41 @@
+# recipes/dummy_app.rb
 intro_message = "🙏 Dummy app adjustments for a rails engine"
-say(message = intro_message, color = :magenta) 
+say(message = intro_message, color: :magenta)
+
+# Register documentation
+# #{name.camelize}::DocumentationHelper.register_doc_section(
+#   :features,
+#   ["🔬 Integrated test application"]
+# )
+
+# #{name.camelize}::DocumentationHelper.register_doc_section(
+#   :dummy_app,
+#   {
+#     title: "Test Application",
+#     content: <<~MD
+#       ### Dummy Application
+#       The engine includes a fully functional test application in `spec/dummy`.
+#       This application demonstrates engine features and provides a development environment.
+
+#       #### Structure
+#       ```
+#       spec/dummy/
+#       ├── app/
+#       ├── config/
+#       ├── db/
+#       └── public/
+#       ```
+
+#       #### Database
+#       The test application uses SQLite by default. Generated files are git-ignored:
+#       - Database files (sqlite3)
+#       - Log files
+#       - Temporary files
+#       - Sass cache
+#     MD
+#   },
+#   position: :after_development
+# )
 
 if File.exist?(File.join(destination_root, 'spec', 'dummy'))
   say "Spec dummy application already exists, skipping."
