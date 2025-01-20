@@ -1,5 +1,5 @@
 # recipes/dummy_app.rb
-intro_message = "🙏 Dummy app adjustments for a rails engine"
+intro_message = "🙏` Dummy app adjustments for a` rails engine"
 say(intro_message, :magenta)
 
 # Register documentation
