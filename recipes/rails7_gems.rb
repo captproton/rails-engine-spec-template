@@ -1,5 +1,5 @@
 intro_message = "🙏 Installing Rails 7 dependencies (jsbundling, stimulus, turbo)..."
-say(message = intro_message, color: :magenta)
+say(intro_message, :magenta)
 
 # Register documentation
 # #{name.camelize}::RecipeDocumentation.register_recipe_docs('rails7_gems') do
@@ -30,7 +30,7 @@ FileUtils.touch "#{app_dir}/Gemfile"
 
 # Install esbuild
 step_message = "🧩 Installing esbuild..."
-say(message = step_message)
+say(step_message)
 Dir.chdir destination_root
 system("bundle add jsbundling-rails")
 bundle
@@ -40,7 +40,7 @@ Dir.chdir destination_root
 
 # Install Stimulus
 step_message = "🧩 Installing stimulus..."
-say(message = step_message)
+say(step_message)
 Dir.chdir destination_root
 system("bundle add stimulus-rails")
 bundle
@@ -50,7 +50,7 @@ Dir.chdir destination_root
 
 # Install Turbo
 step_message = "🧩 Installing turbo..."
-say(message = step_message)
+say(step_message)
 Dir.chdir destination_root
 system("bundle add turbo-rails")
 bundle
@@ -61,7 +61,7 @@ Dir.chdir destination_root
 
 # Create test controller
 step_message = "🧩 Creating test controller..."
-say(message = step_message)
+say(step_message)
 Dir.chdir app_dir
 run "rails g controller DummyRails7Testing index"
 Dir.chdir destination_root
