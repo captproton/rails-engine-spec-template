@@ -9,7 +9,7 @@ intro_message = "
     - source_code_uri
     - changelog_uri
 "
-say(message = intro_message, color: :magenta)
+say(intro_message, :magenta)
 
 # Register documentation
 # "#{name.camelize}::DocumentationHelper".constantize.register_doc_section(
@@ -42,13 +42,13 @@ say(message = intro_message, color: :magenta)
 # puts "🙏 Setting up"
 meta_message = "Let's update the gemspec to remove the bundler warnings:
     - rake db:migrate
- \n"
-say(message = meta_message, color = :magenta)
-new_engine_name = ask("engine name: ", color = :magenta)
-new_homepage_url = ask("homepage url: ", color = :magenta)
-new_summary = ask("Summary: ", color = :magenta)
-new_description = ask("Description: ", color = :magenta)
-new_source_code_uri = ask("Your gem's public repo URL: ", color = :magenta)
+\n"
+say(meta_message, :magenta)
+new_engine_name = ask("engine name: ", :magenta)
+new_homepage_url = ask("homepage url: ", :magenta)
+new_summary = ask("Summary: ", :magenta)
+new_description = ask("Description: ", :magenta)
+new_source_code_uri = ask("Your gem's public repo URL: ", :magenta)
 new_changelog_uri = "#{new_source_code_uri}/blob/main/CHANGELOG.md"
 
 # spec.homepage

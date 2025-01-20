@@ -1,6 +1,6 @@
 # recipes/developer_gems.rb
 intro_message = "🙏 Installing development gems..."
-say(message = intro_message, color: :magenta)
+say(intro_message, :magenta)
 
 # Register documentation
 # #{name.camelize}::DocumentationHelper.register_doc_section(

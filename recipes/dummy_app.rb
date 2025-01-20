@@ -1,6 +1,6 @@
 # recipes/dummy_app.rb
-intro_message = "🙏 Dummy app adjustments for a rails engine"
-say(message = intro_message, color: :magenta)
+intro_message = "🙏` Dummy app adjustments for a` rails engine"
+say(intro_message, :magenta)
 
 # Register documentation
 # #{name.camelize}::DocumentationHelper.register_doc_section(

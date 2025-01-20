@@ -1,69 +1,8 @@
 # recipes/setup_overmind.rb
 intro_message = "🚀 Setting up Overmind development environment..."
-say(message = intro_message, color: :magenta)
+say(intro_message, :magenta)
 
-# Register documentation
-# #{name.camelize}::DocumentationHelper.register_doc_section(
-#   :features,
-#   ["⚡️ Streamlined development workflow with Overmind"]
-# )
-
-# #{name.camelize}::DocumentationHelper.register_doc_section(
-#   :development_environment,
-#   {
-#     title: "Development Environment",
-#     content: <<~MD
-#       ### Development Setup
-
-#       This engine uses Overmind to manage development processes:
-
-#       1. Install Overmind:
-#       ```bash
-#       brew install overmind
-#       ```
-
-#       2. Start the development environment:
-#       ```bash
-#       cd spec/dummy
-#       ./bin/dev
-#       ```
-
-#       This starts:
-#       - Rails server (port 3000)
-#       - Tailwind CSS watcher
-#       - Additional configured processes
-
-#       ### Overmind Commands
-#       While running, use:
-#       - `ctrl-z` to access command mode
-#       - In command mode:
-#         - `r` - restart process
-#         - `c` - connect to process
-#         - `m` - show process logs
-#         - `h` - help
-#         - `q` - quit
-
-#       ### Process Configuration
-#       Processes are defined in `spec/dummy/Procfile.dev`:
-#       ```
-#       web: bin/rails server -p 3000
-#       css: bin/rails tailwindcss:watch
-#       ```
-
-#       Add additional processes as needed for your development workflow.
-#     MD
-#   },
-#   position: :after_installation
-# )
-
-# Create Procfile.dev
-create_file "spec/dummy/Procfile.dev" do
-%{web: bin/rails server -p 3000
-css: bin/rails tailwindcss:watch
-}
-end
-
-# Create bin/dev script
+# Create bin/dev script for Overmind
 create_file "spec/dummy/bin/dev" do
 %{#!/usr/bin/env bash
 
