@@ -1,9 +1,12 @@
 # template.rb
 # frozen_string_literal: true
 
-require_relative 'lib/documentation_system/registry'
-require_relative 'lib/documentation_system/section'
-require_relative 'lib/documentation_system/readme_template'
+TEMPLATE_ROOT = File.dirname(__FILE__)
+LIB_PATH = File.join(TEMPLATE_ROOT, 'lib')
+
+require File.join(LIB_PATH, 'documentation_system/registry')
+require File.join(LIB_PATH, 'documentation_system/section')
+require File.join(LIB_PATH, 'documentation_system/readme_template')
 
 def git_commit(message)
   curdir = Dir.getwd
@@ -39,11 +42,6 @@ RECIPES.each do |recipe|
   say "Applying recipe: #{recipe}", :green
   apply recipe_file
 end
-
-# Generate README
-# readme_content = DocumentationSystem::ReadmeTemplate.new(name)
-#   .render(DocumentationSystem::Registry.instance)
-# create_file "README.md", readme_content
 
 say "Garbage collecting git...", :blue
 git gc: '--quiet'
